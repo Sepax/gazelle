@@ -1,13 +1,13 @@
 # Gazelle
 Appearance-based gaze estimation from face images, trained on MPIIFaceGaze.
 
-# Overview
+## Overview
 
 _Gazelle_ predicts where a person is looking from a single RGB face image. Given a cropped face, the model regresses a 3D gaze direction, expressed as pitch and yaw angles, without any calibration or special hardware.
 
 The project is trained and evaluated on the MPIIFaceGaze dataset using a leave-one-person-out protocol.
 
-# Setup
+## Setup
 
 The requires [uv](https://docs.astral.sh/uv/) to manage Python and dependencies.
 
@@ -17,13 +17,13 @@ cd gazelle
 uv sync
 ```
 
-# Dataset
+## Dataset
  
 This project uses [MPIIFaceGaze](https://perceptualui.org/research/datasets/MPIIFaceGaze), which contains face images from 15 participants with 3D gaze annotations. It is hosted on DaRUS (University of Stuttgart), DOI [10.18419/DARUS-3240](https://doi.org/10.18419/DARUS-3240).
  
 The data is released under CC BY-NC-SA 4.0 and may only be used for non-commercial scientific purposes.
  
-## Download
+### Download
  
 From the repository root:
  
@@ -55,7 +55,7 @@ data/
  
 See `data/MPIIFaceGaze/readme.txt` for the annotation format.
  
-## Preprocessing
+### Preprocessing
  
 Faces are normalised to a fixed virtual camera and saved as 224x224 images, following the [GazeHub benchmark](https://phi-ai.buaa.edu.cn/Gazehub/3D-dataset) so that results are comparable with published numbers. The code is the benchmark authors' own, in `src/gazelle/data/data_processing_core.py` and `data_processing_mpii.py`. The input and output paths are set at the top of the latter.
  
@@ -77,9 +77,7 @@ data/processed/MPIIFaceGaze/
  
 Training uses the `Face` image and the `2DGaze` label from each `.label` file, which holds the gaze as (yaw, pitch) in radians. Samples from right eyes are mirrored, together with their labels, as in the benchmark. The eye crops are not used.
  
-## Citation
- 
-If you use this dataset or the preprocessing, please cite:
+### Citation
  
 - X. Zhang, Y. Sugano, M. Fritz, A. Bulling. *It's Written All Over Your Face: Full-Face Appearance-Based Gaze Estimation.* CVPRW 2017.
 - X. Zhang, Y. Sugano, M. Fritz, A. Bulling. *MPIIGaze: Real-World Dataset and Deep Appearance-Based Gaze Estimation.* IEEE TPAMI 41(1), 2019.
