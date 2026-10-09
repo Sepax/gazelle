@@ -1,0 +1,10 @@
+seed: 42
+data_root: data/processed/MPIIFaceGaze
+test_subject: 0
+backbone: resnet18
+batch_size: 64
+workers: 4
+epochs: 30
+lr: 1.0e-4
+weight_decay: 1.0e-2
+output_dir: runs

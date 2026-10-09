@@ -7,9 +7,9 @@ from omegaconf import OmegaConf
 @dataclass
 class Config:
     seed: int = 42
-    data_root: str = "data/MPIIFaceGaze/Data"
+    data_root: str = "data/processed/MPIIFaceGaze"
+    test_subject: int = 0
     backbone: str = "resnet18"
-    img_size: int = 224
     batch_size: int = 64
     workers: int = 4
     epochs: int = 30
