@@ -1,0 +1,28 @@
+[project]
+name = "gazelle"
+version = "0.1.0"
+description = "Appearance-based gaze estimation from face images, trained on MPIIFaceGaze."
+readme = "README.md"
+authors = [
+    { name = "Sebastian Pålsson", email = "seb.plson@gmail.com" },
+    { name = "Erik Green", email = "erik.green@example.com" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "timm>=1.0.30",
+    "torch>=2.14.1",
+    "torchvision>=0.29.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.uv]
+python-preference = "only-managed"
