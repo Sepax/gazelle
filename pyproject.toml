@@ -9,6 +9,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "rich>=15.0.0",
     "timm>=1.0.30",
     "torch>=2.14.1",
     "torchvision>=0.29.1",
