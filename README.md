@@ -12,7 +12,7 @@ The project is trained and evaluated on the MPIIFaceGaze dataset using a leave-o
 The requires [uv](https://docs.astral.sh/uv/) to manage Python and dependencies.
 
 ```bash
-git clone https://github.com/<your-username>/gazelle.git
+git clone https://github.com/sepax/gazelle.git
 cd gazelle
 uv sync
 ```
