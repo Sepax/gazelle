@@ -1,6 +1,7 @@
 import pytest
+from omegaconf.errors import ConfigKeyError
 
-from gazelle.config import Config, load_config
+from gazelle.config import Config, load_config, save_config
 
 
 def test_yaml_values_are_loaded(tmp_path):
@@ -30,5 +31,18 @@ def test_overrides_beat_yaml(tmp_path):
 def test_unknown_key_rejected(tmp_path):
     path = tmp_path / "c.yaml"
     path.write_text("not_a_field: 1\n")
-    with pytest.raises(Exception):
+    with pytest.raises(ConfigKeyError):
         load_config(path)
+
+def test_saved_config_round_trips(tmp_path):
+    cfg = Config(epochs=7, backbone="convnext_tiny")
+    path = tmp_path / "run" / "config.yaml"
+    save_config(cfg, path)
+    assert load_config(path) == cfg
+
+
+def test_save_config_records_defaults(tmp_path):
+    """Every field is written, not just the ones set explicitly."""
+    path = tmp_path / "config.yaml"
+    save_config(Config(), path)
+    assert "weight_decay" in path.read_text()

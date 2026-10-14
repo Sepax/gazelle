@@ -4,3 +4,5 @@ checkpoints/
 runs/
 *.pt
 *.pyc
+benchmarks/
+*.ckpt

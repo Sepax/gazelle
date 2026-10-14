@@ -1,10 +1,27 @@
+# Baseline: ResNet-18 fine-tuned on MPIIFaceGaze, one LOPO fold.
 seed: 42
 data_root: data/processed/MPIIFaceGaze
+
+# Development fold. Freeze hyperparameters before running all 15.
 test_subject: 0
+
 backbone: resnet18
+pretrained: true
+
+# Health signal only — not used for early stopping or model selection.
+val_fraction: 0.05
+
 batch_size: 64
-workers: 4
-epochs: 30
-lr: 1.0e-4
+
+# M3 Pro has 11 cores; JPEG decode is the CPU-side bottleneck.
+workers: 8
+
+# Cosine decay runs over exactly this many epochs, so changing it changes the
+# schedule shape, not just the duration.
+epochs: 20
+
+lr: 3.0e-4
 weight_decay: 1.0e-2
+
 output_dir: runs
+benchmark_dir: benchmarks
