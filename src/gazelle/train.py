@@ -7,7 +7,7 @@ from pathlib import Path
 
 import lightning as L
 import torch
-from lightning.pytorch.callbacks import ModelCheckpoint
+from lightning.pytorch.callbacks import LearningRateMonitor, ModelCheckpoint
 from lightning.pytorch.loggers import TensorBoardLogger
 from torch.utils.data import DataLoader, Subset, random_split
 
@@ -97,7 +97,7 @@ def run(cfg: Config) -> dict[str, float]:
         max_epochs=cfg.epochs,
         default_root_dir=run_dir,
         logger=TensorBoardLogger(save_dir=run_dir, name="", version=""),
-        callbacks=[checkpoint],
+        callbacks=[checkpoint, LearningRateMonitor(logging_interval="epoch")],
         accelerator="auto",
         log_every_n_steps=25,
     )
