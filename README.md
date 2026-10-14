@@ -57,12 +57,12 @@ See `data/MPIIFaceGaze/readme.txt` for the annotation format.
  
 ### Preprocessing
  
-Faces are normalised to a fixed virtual camera and saved as 224x224 images, following the [GazeHub benchmark](https://phi-ai.buaa.edu.cn/Gazehub/3D-dataset) so that results are comparable with published numbers. The code is the benchmark authors' own, in `src/gazelle/data/data_processing_core.py` and `data_processing_mpii.py`. The input and output paths are set at the top of the latter.
+Faces are normalised to a fixed virtual camera and saved as 224x224 images, following the [GazeHub benchmark](https://phi-ai.buaa.edu.cn/Gazehub/3D-dataset) so that results are comparable with published numbers. The code is the benchmark authors' own, in `src/gazelle/data/gazehub/data_processing_core.py` and `data_processing_mpii.py`. The input and output paths are set at the top of the latter.
  
 From the repository root:
  
 ```bash
-uv run python -m gazelle.data.data_processing_mpii
+uv run python -m gazelle.data.gazehub.data_processing_mpii
 ```
  
 This takes a couple of minutes and writes 3,000 samples per participant (45,000 in total):

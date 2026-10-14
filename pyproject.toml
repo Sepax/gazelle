@@ -30,5 +30,8 @@ dev = [
     "ruff>=0.16.10",
 ]
 
+[tool.ruff]
+extend-exclude = ["src/gazelle/data/gazehub"]
+
 [tool.uv]
 python-preference = "only-managed"

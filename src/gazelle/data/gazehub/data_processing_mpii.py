@@ -2,7 +2,7 @@ import numpy as np
 import scipy.io as sio
 import cv2 
 import os
-from gazelle.data import data_processing_core as dpc
+from gazelle.data.gazehub import data_processing_core as dpc
 
 root = "data/MPIIFaceGaze/Data"
 sample_root = "data/MPIIGaze/Evaluation Subset/sample list for eye image"
