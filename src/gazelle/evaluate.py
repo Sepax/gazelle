@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader
 
 from gazelle.data.dataset import GazeDataset
 from gazelle.data.transforms import build_eval_transform
+from gazelle.logging_setup import quiet_startup
 from gazelle.module import GazeModule
 
 
@@ -45,6 +46,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    quiet_startup()
     metrics = evaluate_checkpoint(args.checkpoint, args.subject)
     print(f"angular_error: {metrics['test/angular_error']:.2f} deg")
 

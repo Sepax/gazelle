@@ -6,6 +6,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from gazelle.config import Config, load_config
+from gazelle.logging_setup import quiet_startup
 from gazelle.train import run
 
 
@@ -66,6 +67,7 @@ def main() -> None:
     parser.add_argument("overrides", nargs="*", help="Dotlist overrides")
     args = parser.parse_args()
 
+    quiet_startup()
     run_benchmark(load_config(args.config, args.overrides), args.folds)
 
 

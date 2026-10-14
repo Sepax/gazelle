@@ -1,6 +1,4 @@
 import argparse
-import logging
-import warnings
 from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
@@ -15,6 +13,7 @@ from gazelle.config import Config, load_config, save_config
 from gazelle.data.dataset import GazeDataset
 from gazelle.data.splits import lopo_split
 from gazelle.data.transforms import build_eval_transform, build_train_transform
+from gazelle.logging_setup import quiet_startup
 from gazelle.module import GazeModule
 
 
@@ -110,25 +109,6 @@ def run(cfg: Config) -> dict[str, float]:
     # best.ckpt is still saved, as a diagnostic.
     results = trainer.test(module, test_loader, ckpt_path=None)
     return dict(results[0])
-
-
-def quiet_startup() -> None:
-    """Drop third-party startup noise that is not actionable.
-
-    Targets specific messages rather than whole loggers, so genuinely useful
-    lines — "GPU available: True (mps), used: True" — still print.
-    """
-    warnings.filterwarnings(
-        "ignore", message=r"`isinstance\(treespec, LeafSpec\)` is deprecated"
-    )
-
-    class _DropLitLoggerTip(logging.Filter):
-        def filter(self, record: logging.LogRecord) -> bool:
-            return "litlogger" not in record.getMessage().lower()
-
-    logging.getLogger("lightning.pytorch.utilities.rank_zero").addFilter(
-        _DropLitLoggerTip()
-    )
 
 
 def main() -> None:
