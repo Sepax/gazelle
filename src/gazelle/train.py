@@ -16,6 +16,8 @@ from gazelle.data.transforms import build_eval_transform, build_train_transform
 from gazelle.logging_setup import quiet_startup
 from gazelle.module import GazeModule
 
+torch.set_float32_matmul_precision("high")
+
 
 def build_loaders(cfg: Config) -> tuple[DataLoader, DataLoader, DataLoader]:
     """Build the train, val and test loaders for one fold.

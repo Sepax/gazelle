@@ -48,3 +48,12 @@ extend-exclude = ["src/gazelle/data/gazehub"]
 
 [tool.uv]
 python-preference = "only-managed"
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true

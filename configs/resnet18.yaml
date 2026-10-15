@@ -14,7 +14,7 @@ val_fraction: 0.05
 batch_size: 64
 
 # M3 Pro has 11 cores; JPEG decode is the CPU-side bottleneck.
-workers: 8
+workers: 4
 
 # Cosine decay runs over exactly this many epochs, so changing it changes the
 # schedule shape, not just the duration.
