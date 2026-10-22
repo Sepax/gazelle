@@ -1,5 +1,5 @@
 # Gazelle
-Gaze estimation from face images, trained on MPIIFaceGaze.
+Appearance-based gaze estimation from face images, trained on MPIIFaceGaze.
 
 ## Overview
 
