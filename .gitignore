@@ -6,3 +6,4 @@ runs/
 *.pyc
 benchmarks/
 *.ckpt
+.DS_Store
